@@ -1,50 +1,85 @@
-# React + TypeScript + Vite
+# 📚 MetaTracker - Frontend Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 Descrição do Projeto
 
-Currently, two official plugins are available:
+**MetaTracker** é uma aplicação moderna e interativa para o cadastro e gerenciamento de metas pessoais. Desenvolvida com o intuito de fornecer uma interface simples e eficiente, a aplicação permite que os usuários registrem, visualizem e acompanhem suas metas de forma clara e intuitiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **Linguagens e Estruturas:**
+  - React.js
+  - TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Bibliotecas e Frameworks:**
+  - Vite (Ferramenta de build e bundler)
+  - React Hook Form (Gerenciamento de formulários)
+  - Zod (Validação de dados)
+  - ShadCN UI (Componentes UI de design acessível)
+  - Tailwind CSS (Framework CSS para design responsivo e personalizável)
 
-- Configure the top-level `parserOptions` property like this:
+- **Back-end:**
+  - Node.js (Backend para persistência e manipulação de dados)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **🗂 Gerenciamento de Pacotes:**
+  - npm
+
+## 🎯 Como Instalar e Usar o Projeto
+
+### 1. Clone o repositório
+Abra o terminal e execute o seguinte comando para clonar o repositório:
+```bash
+git clone https://github.com/seu-usuario/meta-tracker.git
+cd meta-tracker
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 2. Instale as dependências
+Instale as dependências do projeto com o npm:
+```bash
+npm install
 ```
+
+### 3. Inicie o servidor de desenvolvimento
+Execute o comando abaixo para iniciar a aplicação localmente:
+```bash
+npm run dev
+```
+A aplicação estará disponível em `http://localhost:5173/`.
+
+### 4. Teste a aplicação
+A aplicação pode ser testada acessando as rotas principais de cadastro, visualização e gerenciamento de metas. As validações dos formulários são feitas utilizando a biblioteca **Zod**, garantindo a integridade dos dados inseridos.
+
+## 📝 Funcionalidades
+
+- **Cadastro de Metas**: O usuário pode cadastrar novas metas com descrições, datas e status.
+- **Validação de Formulários**: Utiliza **Zod** para garantir que os dados inseridos estejam no formato correto.
+- **Interface Intuitiva**: Utiliza **ShadCN UI** para proporcionar uma interface limpa e acessível.
+- **Estilos Responsivos**: A aplicação é responsiva e usa **Tailwind CSS** para garantir que a interface funcione bem em diferentes dispositivos.
+
+## 🚀 Scripts Disponíveis
+
+- `npm run dev`: Inicia o servidor de desenvolvimento.
+- `npm run build`: Cria uma versão otimizada para produção.
+- `npm run preview`: Visualiza a versão de produção antes de fazer o deploy.
+
+## 🔧 Dependências
+
+- **React**: Biblioteca principal para construção da interface do usuário.
+- **TypeScript**: Linguagem que adiciona tipagem estática a JavaScript.
+- **Vite**: Ferramenta de build e bundling.
+- **React Hook Form**: Gerenciamento de formulários de maneira simples e eficiente.
+- **Zod**: Biblioteca de validação de esquemas de dados.
+- **ShadCN UI**: Componentes UI para interfaces modernas e acessíveis.
+- **Tailwind CSS**: Framework de CSS para estilos rápidos e responsivos.
+
+## ⚙️ Como rodar o projecto
+
+```bash
+cd in.Orbit
+npm install
+npm run dev
+```
+Isso iniciará o servidor e conectará a aplicação frontend.
+
+## 📌 Licença
+
+Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
