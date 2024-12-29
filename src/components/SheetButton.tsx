@@ -1,12 +1,8 @@
-//Imagens
-import Foguete from "../assets/img-163.png";
-import Yhanko from "../assets/Rectangle.png";
-import Avatar from "../assets/avatar.png";
-
 //Icones
 import { Plus } from "lucide-react";
 
-
+//Componentes
+import { Label } from "./ui/label";
 import { Button } from "./ui/button"
 import {
   Sheet,
@@ -18,53 +14,110 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+ 
+import { Input } from "./ui/input";
+import { RadioGroupIndicator } from "@radix-ui/react-radio-group";
 
 export function SheetBotton() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-      <div className="h-screen flex flex-col items-center justify-center gap-8">
-        <div className="flex flex-col items-center justify-center gap-8">
-          <div className="flex justify-center items-center space-x-2 text-xl">
-            <img src={Yhanko} alt="logo" className="size-16"/>
-            <h1>InOrbit</h1>
-          </div>
-          <div className="flex">
-            <img src={Foguete} alt="foguete" className="size-10 absolute ml-4"/>
-            <img src={Avatar} alt="avatar" className="size-32"/>
-          </div>
-        </div>
-           
-          <p className="text-zinc-300 leading-relaxed max-w80   text-center">Você ainda não cadastrou nenhuma meta! Que   tal cadastrar uma agora mesmo?</p>
-
-          <Button className="px-4 py-2.5 rounded-lg bg-violet-500 text-violet-50 flex items-centergap-2 text-sm  font-medium   tracking-tighter hover:bg-violet-600 w-52 h-12">
-            <Plus className="size-4"/>
-              Cadastrar meta
-          </Button>
-      </div>
+        <Button className="px-4 py-2.5 rounded-lg bg-violet-500 text-violet-50 flex items-centergap-2 text-sm  font-medium   tracking-tighter hover:bg-violet-600 w-52 h-12">
+          <Plus className="size-4"/>
+            Cadastrar meta
+        </Button>
       </SheetTrigger>
-      <SheetContent className="flex flex-col gap-3" style={{minWidth:500}}>
+      <SheetContent className="flex flex-col gap-6 h-full" style={{minWidth:500}}>
         <SheetHeader>
-          <SheetTitle>Edit profile</SheetTitle>
-          <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
-          </SheetDescription>
-        </SheetHeader>
-            <div>
+            <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
-                <h1>Cadastrar meta</h1>
+                <SheetTitle>Cadastrar meta</SheetTitle>
               </div>
-              <p>
+              <SheetDescription>
                   Adicione actividades que te fazem bem e  que você quer continuar praticando toda semana.
-              </p>
+              </SheetDescription>
             </div>
-            
-            <span>Aqui escreve o que vem depois de clicar o botão
-            </span>
+          
+          </SheetHeader>
+
+          <form className="flex flex-1 flex-col justify-between">
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
+                    <Label htmlFor="title">Qual a actividade?</Label>
+                    <Input id="title" autoFocus placeholder="Praticar exercícios, meditar, etc..."/>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="title">Quantas vezes na semana?</Label>
+                  <RadioGroup>
+                      <RadioGroupItem value="1" autoFocus>
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        1x na semana
+                       </span>
+                       <span className="text-lg leading-none">🥱</span>
+                      </RadioGroupItem>
+
+                      <RadioGroupItem value="2" autoFocus >
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        2x na semana
+                       </span>
+                       <span className="text-lg leading-none">🙂</span>
+                      </RadioGroupItem>
+
+                      <RadioGroupItem value="3" autoFocus >
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        3x na semana
+                       </span>
+                       <span className="text-lg leading-none">😎</span>
+                      </RadioGroupItem>
+
+                      <RadioGroupItem value="4" autoFocus >
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        4x na semana
+                       </span>
+                       <span className="text-lg leading-none">😜</span>
+                      </RadioGroupItem>
+
+                      <RadioGroupItem value="5" autoFocus >
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        5x na semana
+                       </span>
+                       <span className="text-lg leading-none">🤨</span>
+                      </RadioGroupItem>
+
+                      <RadioGroupItem value="6" autoFocus >
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        6x na semana
+                       </span>
+                       <span className="text-lg leading-none">🤯</span>
+                      </RadioGroupItem>
+
+                      <RadioGroupItem value="todos" autoFocus>
+                        <RadioGroupIndicator />
+                       <span className="text-zinc-300 text-sm font-medium leading-none">
+                        Todos os dias na semana
+                       </span>
+                       <span className="text-lg leading-none">🔥</span>
+                      </RadioGroupItem>
+
+                  </RadioGroup>
+                </div>
+              </div>
+
+
+          </form>
         <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
+            <SheetClose className="flex items-center gap-3">
+              <Button className="flex-1" variant="secondary">Fechar</Button>
+              <Button className="flex-1 bg-violet-500 ">Salvar</Button>
+            </SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>
