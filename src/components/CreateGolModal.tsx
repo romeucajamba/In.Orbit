@@ -19,7 +19,7 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 
 
-export function SheetBotton() {
+export function CreatGolModal() {
   const [isClicked, setIsClicked] = useState(false)
   const [isClicked1, setIsClicked1] = useState(false)
   const [isClicked2, setIsClicked2] = useState(false)
@@ -77,7 +77,7 @@ export function SheetBotton() {
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
                     <Label htmlFor="title">Qual a actividade?</Label>
-                    <Input id="title" autoFocus placeholder="Praticar exercícios, meditar, etc..."/>
+                    <Input id="title" autoFocus placeholder="Praticar exercícios, meditar, etc..." className="ocus:border-violet-500 focus-visible:border-violet-500"/>
                 </div>
 
                 <div className="flex flex-col gap-4 h-80">
