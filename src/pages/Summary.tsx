@@ -72,6 +72,16 @@ export function Summary () {
                         <CheckCircle2 className="size-4 text-pink-500"/>
                         <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">Acordou cedo</span>" <span className="text-zinc-100">às 08:13h</span></span>
                     </li>
+
+                    <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-pink-500"/>
+                        <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">Acordou cedo</span>" <span className="text-zinc-100">às 08:13h</span></span>
+                    </li>
+
+                    <li className="flex items-center gap-2">
+                        <CheckCircle2 className="size-4 text-pink-500"/>
+                        <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">Acordou cedo</span>" <span className="text-zinc-100">às 08:13h</span></span>
+                    </li>
                 </ul>
             </div>
         </section>

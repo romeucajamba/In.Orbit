@@ -1,4 +1,4 @@
-import { CreateGol } from "./pages/CreateGol";
+//import { CreateGol } from "./pages/CreateGol";
 import { Summary } from "./pages/Summary";
 
 export function App() {
