@@ -4,12 +4,21 @@ import { CheckCircle2, Plus } from "lucide-react";
 
 //Componentes
 import { BarProgress } from "../components/BarProgress";
-import {Dialog, DialogTrigger } from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "../components/ui/separator";
+import { CreatGoalModalInSummay } from "../components/CreateGoalModalInSummar";
 
+//Hook
+import { useGoalStore } from "../hooks/useGoalData";
+import { useEffect } from "react";
 
-export function Summary () {
+export function Summary() {
+    const { goals, fetchGoals } = useGoalStore();
+
+    useEffect(() => {
+      fetchGoals();
+    }, [fetchGoals]);
+  
     return (
         <section className="py-10 max-w-[480px] px-5 mx-auto flex flex-col gap-6">
             <header className="flex items-center justify-between">
@@ -18,14 +27,7 @@ export function Summary () {
                     <span className="text-lg font-semibold">15 a 28 de Fevereiro</span>
                 </div>
 
-               <Dialog>
-               <DialogTrigger asChild>
-                    <Button size="sm">
-                        <Plus className="size-4" />
-                        Cadastrar meta
-                    </Button>
-                </DialogTrigger>
-               </Dialog>
+                <CreatGoalModalInSummay/>
             </header>
 
             <div className="flex flex-col gap-3">
@@ -68,20 +70,12 @@ export function Summary () {
                 </h3>
 
                 <ul className="flex flex-col gap-3">
-                    <li className="flex items-center gap-2">
-                        <CheckCircle2 className="size-4 text-pink-500"/>
-                        <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">Acordou cedo</span>" <span className="text-zinc-100">às 08:13h</span></span>
-                    </li>
-
-                    <li className="flex items-center gap-2">
-                        <CheckCircle2 className="size-4 text-pink-500"/>
-                        <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">Acordou cedo</span>" <span className="text-zinc-100">às 08:13h</span></span>
-                    </li>
-
-                    <li className="flex items-center gap-2">
-                        <CheckCircle2 className="size-4 text-pink-500"/>
-                        <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">Acordou cedo</span>" <span className="text-zinc-100">às 08:13h</span></span>
-                    </li>
+                    {goals.map((goal) => (
+                        <li key={goal.id} className="flex items-center gap-2">
+                            <CheckCircle2 className="size-4 text-pink-500"/>
+                            <span className="text-sm text-zinc-400">Você completou "<span className="text-zinc-100">{goal.title} </span>  " {goal.timesPerWeek} X na semana " <span className="text-zinc-100"> às 08:13h</span></span>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </section>

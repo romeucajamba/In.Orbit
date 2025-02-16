@@ -3,9 +3,13 @@ import Foguete from "../assets/img-163.png";
 import Yhanko from "../assets/Rectangle.png";
 import Avatar from "../assets/avatar.png";
 
-import { CreatGolModal} from "../components/CreateGolModal";
+//Componentes
+import { CreatGoalModal} from "../components/CreateGoalModal";
 
-export function CreateGol () {
+
+
+export function CreateGoal() {
+
     return (
         <section>
           <div className="h-screen flex flex-col items-center justify-center gap-8">
@@ -20,7 +24,7 @@ export function CreateGol () {
             </div>
           </div>
           <p className="text-zinc-300 leading-relaxed max-w80   text-center">Você ainda não cadastrou nenhuma meta! <br/> Que   tal cadastrar uma agora mesmo?</p>
-          <CreatGolModal />
+          <CreatGoalModal />
       </div>
         </section>
     )
