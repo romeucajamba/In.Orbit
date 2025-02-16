@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getGoals, addGoal } from "../service/api";
+import { getGoals, addGoal, goals } from "../service/api";
 import { Goal } from "../types/interfaces";
 import { GoalStore} from "../types/interfaces";
 
@@ -19,8 +19,9 @@ export const useGoalStore = create<GoalStore>((set, get) => ({
       title,
       timesPerWeek: frequency,
       type: "weekly", // Supondo que `Goal` tenha um campo `type`
-      completed: 2,
-      completedGoal: false 
+      completed: 0,
+      completedGoal: false,
+      total: goals.length 
     };
 
     set((state) => ({ goals: [...state.goals, newGoal] }));

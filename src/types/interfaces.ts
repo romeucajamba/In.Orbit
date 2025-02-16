@@ -4,7 +4,8 @@ export type Goal = {
   type: 'daily' | 'weekly';
   completed: number;
   timesPerWeek: number;
-  completedGoal: boolean
+  completedGoal: boolean,
+  total: number
 };
 
 export interface GoalStore {

@@ -15,7 +15,8 @@ export async function addGoal(title: string, type: 'daily' | 'weekly', timesPerW
         type,
         completed: 0,
         timesPerWeek,
-        completedGoal: false
+        completedGoal: false,
+        total: goals.length + 1
     };
 
     // Simula um atraso assíncrono, por exemplo, uma chamada de API
