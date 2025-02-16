@@ -4,7 +4,7 @@ import { Goal } from "../types/interfaces";
 import { GoalStore} from "../types/interfaces";
 
 
-export const useGoalStore = create<GoalStore>((set) => ({
+export const useGoalStore = create<GoalStore>((set, get) => ({
   goals: [],
 
   fetchGoals: async () => {
@@ -19,10 +19,26 @@ export const useGoalStore = create<GoalStore>((set) => ({
       title,
       timesPerWeek: frequency,
       type: "weekly", // Supondo que `Goal` tenha um campo `type`
-      completed: false, // Supondo que `Goal` tenha um campo `completed`
+      completed: 2,
+      completedGoal: false 
     };
 
     set((state) => ({ goals: [...state.goals, newGoal] }));
     await addGoal(title, "weekly", frequency); // Continua chamando a API
+  },
+
+  getCompletedPercentage: () => {
+    const goals = get().goals;
+    const totalGoals = goals.length;
+    const completedGoals = goals.filter((goal) => goal.completed).length;
+    return totalGoals > 0 ? Math.round((completedGoals / totalGoals) * 100) : 0;
+  },
+
+  completeGoal: (goalTitle: string) => {
+    set((state) => ({
+      goals: state.goals.map((goal) =>
+        goal.title === goalTitle ? { ...goal, completedGoal: true } : goal 
+      ),
+    }));
   },
 }));

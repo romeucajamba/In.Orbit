@@ -13,14 +13,28 @@ export async function addGoal(title: string, type: 'daily' | 'weekly', timesPerW
         id: goals.length + 1,
         title,
         type,
-        completed: false,
+        completed: 0,
         timesPerWeek,
+        completedGoal: false
     };
 
     // Simula um atraso assíncrono, por exemplo, uma chamada de API
     return new Promise((resolve) => {
         setTimeout(() => {
             goals.push(newGoal);
+            resolve();
+        }, 1000); // Simulando um delay de 1 segundo
+    });
+}
+
+export async function completionGoal(goalTitle:string): Promise<void>  {
+    const updateGoal = goals.map((goal) =>
+        goal.title === goalTitle ? { ...goal, completedGoal: true } : goal 
+    )
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            goals.push(...updateGoal);
             resolve();
         }, 1000); // Simulando um delay de 1 segundo
     });

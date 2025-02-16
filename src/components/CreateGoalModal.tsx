@@ -1,6 +1,5 @@
 //Icones
 import { Plus, Loader2, Angry, Smile } from "lucide-react";
-import { AiOutlineClose } from "react-icons/ai";
 
 //Componentes
 import { Label } from "./ui/label";
@@ -10,7 +9,6 @@ import {
   SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -19,7 +17,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "./ui/input";
 
 // API
-import { addGoal } from "../service/api"
+import { addGoal } from "../service/api";
+import { useGoalStore } from "../hooks/useGoalData";
 
 //configurations
 import { useForm } from "react-hook-form";
@@ -27,18 +26,16 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { ToastAction } from "@/components/ui/toast";
-import { useGoalStore } from "../hooks/useGoalData";
 
 const createGoalSchema = z.object({
-  golInput: z.string().min(6, "A meta deve ter no mínimo 6 caracteres").nonempty("Meta é obrigatório"),
+  golInput: z.string().nonempty("Meta é obrigatório"),
   timesPerWeek: z.coerce.number().min(1).max(7), 
 });
 // Tipo inferido do schema do Zod
 type CreateGolFormData = z.infer<typeof createGoalSchema>;
 
 export function CreatGoalModal() {
-const { addNewGoal } = useGoalStore()
+  const { addNewGoal } = useGoalStore()
 
   const { toast } = useToast();
   const {
@@ -72,22 +69,20 @@ const { addNewGoal } = useGoalStore()
       toast({
         description: (
           <div className="flex items-center gap-4">
-            <Smile />
-            <span className="text-[#717F96]">Meta cadastrada com sucesso!</span>
+            <Smile className="text-[#1FC16B]"/>
+            <span className="text-[#1FC16B]">Meta cadastrada com sucesso!</span>
           </div>
         ),
-        action: <ToastAction altText="close"><AiOutlineClose /></ToastAction>,
         className: "border-l-4 border-l-[#1FC16B]",
       });
     } catch {
       toast({
         description: (
           <div className="flex items-center gap-4">
-            <Angry />
-            <span className="text-[#717F96]">Algo deu errado! Verifique os campos.</span>
+            <Angry className="text-[#FB3748]"/>
+            <span className="text-[#FB3748]">Algo deu errado! Verifique os campos.</span>
           </div>
         ),
-        action: <ToastAction altText="close"><AiOutlineClose /></ToastAction>,
         className: "border-l-4 border-l-[#FB3748]",
       });
     } finally {
@@ -117,7 +112,7 @@ const { addNewGoal } = useGoalStore()
           
           </SheetHeader>
 
-          <form className="flex flex-1 flex-col justify-between" onSubmit={handleSubmit(onSubmit)}>
+          <form className="flex flex-col justify-between h-[40rem]" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
                     <Label htmlFor="title">Qual a actividade?</Label>
@@ -189,23 +184,19 @@ const { addNewGoal } = useGoalStore()
                 </div>
               </div>
 
-
-          </form>
-          <SheetFooter>
-            <div className="flex items-center justify-center gap-3 w-screen">
+              <div className="flex items-center justify-center gap-3">
               <SheetClose asChild>
-                <Button variant="secondary">Fechar</Button>
+                <Button className="w-28"  variant="secondary">Fechar</Button>
               </SheetClose>
               <Button 
                 type="submit" 
-                className="w-28 bg-violet-500" 
-                onClick={handleSubmit(onSubmit)}
+                className="w-28 bg-violet-500 hover:bg-violet-600 " 
                 disabled={isLoading}
               >
                 {isLoading ? <Loader2 className="animate-spin" /> : "Salvar"}
               </Button>
             </div>
-        </SheetFooter>
+          </form>
       </SheetContent>
     </Sheet>
   )

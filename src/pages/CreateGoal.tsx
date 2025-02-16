@@ -6,8 +6,6 @@ import Avatar from "../assets/avatar.png";
 //Componentes
 import { CreatGoalModal} from "../components/CreateGoalModal";
 
-
-
 export function CreateGoal() {
 
     return (

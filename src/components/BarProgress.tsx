@@ -1,18 +1,18 @@
-"use client"
-
-import * as React from "react"
+"use client";
 
 import { Progress } from "@/components/ui/progress";
-
+import { useEffect, useState } from "react";
+import { useGoalStore } from "@/hooks/useGoalData";
 
 export function BarProgress() {
-  const [progress, setProgress] = React.useState(15)
+  const getCompletedPercentage = useGoalStore((state) => state.getCompletedPercentage);
+  const completedPercentage = getCompletedPercentage(); // Obtém a porcentagem calculada pelo Zustand
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500)
-    return () => clearTimeout(timer)
-  }, [])
+  const [progress, setProgress] = useState(0);
 
-  return <Progress value={progress} max={20} className="w-[100%]" >
-  </Progress>
+  useEffect(() => {
+    setProgress(completedPercentage);
+  }, [completedPercentage]); // Atualiza a barra de progresso sempre que a porcentagem mudar
+
+  return <Progress value={progress} max={100} className="w-full" />;
 }
